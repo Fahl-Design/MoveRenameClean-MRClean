@@ -419,7 +419,7 @@ Function CleanFileNames() {
         Get-ChildItem -path $pathDone\* -Include *.mkv -filter "$word" -Recurse -File |
         foreach {
             
-            If ($_.BaseName -match ("( |-)"+[regex]::Escape("$regex")+"(|-| )")) {
+            If ($_.BaseName -match ("( |-|)"+[regex]::Escape("$regex")+"(|-| )")) {
                 logger ("[CleanFileNames] Removing nameParts found "+$_.Name)
                 Rename-Item $_.FullName -NewName $_.Name.Replace($Matches[0],$null)
                 logger ("[CleanFileNames] Removing nameParts to "+$_.Name.Replace($Matches[0],$null))
