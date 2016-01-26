@@ -54,7 +54,7 @@ function Parse-IniFile ($file)
 }
 # get config from file
 $config = (Parse-IniFile $iniFile)
-
+$pathDL = ($config.SYSTEM.baseDir + "\" + $config.SYSTEM.folderDownload)
 if ($config.SYSTEM.baseDir -eq "notSet") {
     Write-Host "[ERROR] BaseDir no set, check your $iniFile"
     pause
