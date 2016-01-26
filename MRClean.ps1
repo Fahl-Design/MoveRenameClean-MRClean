@@ -459,8 +459,7 @@ $removeCount = $config.REMOVE.Count
 [ARRAY]$downloading = @(Get-ChildItem $pathDL -Filter "*.part" -recurse -File)
 [ARRAY]$downloading += @(Get-ChildItem $pathDL -Filter "*.chunk0" -recurse -File)
 [ARRAY]$downloading += @(Get-ChildItem $pathDL -Filter "*.rar" -recurse -File)
-$downloading
-endit "debug"
+
 [ARRAY]$downloadingDone = @(Get-ChildItem $pathDone -Filter "*.mkv" -recurse -File)
 # # # runner
 Function runprocess {
