@@ -284,7 +284,7 @@ Function MoveFiles() {
     logger "[MoveFiles] Start moving files"
     hostmsg ("===== MoveFiles - Files started")
 
-    $moveFilesTypes = @("*.iso","*.img","*.mkv","*.avi","*.mp4","*.mpeg","*.mov","*.mvts")
+    $moveFilesTypes = @("*.iso","*.img","*.mkv","*.avi","*.mp4","*.mpeg","*.mov","*.mvts","*.ts")
     try {
         $counterMoved = 0
         $pathDL = ($config.SYSTEM.baseDir + "\" + $config.SYSTEM.folderDownload)
