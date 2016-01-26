@@ -343,7 +343,7 @@ Function CleanupEmptyDirectorys(){
 
         Get-ChildItem -path $pathDL | foreach {
 
-            $check = @(Get-ChildItem $_.FullName -Include *.chunk0,*.rar,*.mkv,*.iso,*.bin,*.img -File -Recurse)
+            $check = @(Get-ChildItem $_.FullName -Include *.chunk0,*.rar,*.mkv,*.iso,*.bin,*.img,*.part -File -Recurse)
 
             if ($check.Count -eq 0) {
 
@@ -456,9 +456,11 @@ $logCount = (Get-Content -Force ($config.SYSTEM.baseDir + "\" + $config.LOGGER.f
 $sncount = $config.RENAME.Count
 $removeCount = $config.REMOVE.Count
 
-[ARRAY]$downloading = @(Get-ChildItem $pathDL -Filter "*.chunk0" -recurse -File)
+[ARRAY]$downloading = @(Get-ChildItem $pathDL -Filter "*.part" -recurse -File)
+[ARRAY]$downloading += @(Get-ChildItem $pathDL -Filter "*.chunk0" -recurse -File)
 [ARRAY]$downloading += @(Get-ChildItem $pathDL -Filter "*.rar" -recurse -File)
-
+$downloading
+endit "debug"
 [ARRAY]$downloadingDone = @(Get-ChildItem $pathDone -Filter "*.mkv" -recurse -File)
 # # # runner
 Function runprocess {
